@@ -6,7 +6,9 @@ spring:
     web-application-type: none
   datasource:
     hikari:
-      maximum-pool-size: 2
+      # Flyway holds the schema-history lock and the migration connection and opens another for callbacks:
+      # 2 is not enough (seen in the local cloud simulation of T011).
+      maximum-pool-size: 4
       minimum-idle: 1
   flyway:
     enabled: true

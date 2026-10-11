@@ -88,3 +88,9 @@
 ## 2026-10-11 · 001-migracion-aws · T010 hecha
 - db/cloud/afterMigrate.sql: DO con format(%I/%L): crea users_app si falta, ALTER ROLE PASSWORD, CONNECT/USAGE, CRUD en todas las tablas + privilegios por defecto; revoca escritura sobre flyway_schema_history (añadido respecto a D-007: la app no toca el historial).
 - Verificado: suite completa en verde (70 pruebas: AwsProfileConfigTest 5, UserControllerIT 24, RequestLoggingFilterTest 2, UserTest 16, CloudMigrationIT 4, UserServiceTest 19). Un primer intento falló de nuevo al escribir informes tras borrar build/test-results (transitorio de la carpeta compartida).
+
+## 2026-10-11 · 001-migracion-aws · T011 hecha
+- Dockerfile: usuario `app` (uid 100), JAVA_TOOL_OPTIONS=-XX:MaxRAMPercentage=75, COPY --chown, ENTRYPOINT exec.
+- Verificado: build linux/amd64 OK; `id` = uid=100(app); docker compose (perfil docker): health UP, 8 usuarios, línea de petición en texto.
+- Simulación local de la nube (postgres:17 + imagen): la tarea `aws,migrate` FALLÓ con pool 2 (Hikari agotado: Flyway usa 3 conexiones con callbacks) → pool del perfil migrate subido a 4 (application-migrate.yml); después exit 0, repetida exit 0, sin la contraseña en logs. Servicio `aws` como users_app: health UP, 8 usuarios, logs JSON ECS con method/path/status/duration_ms; SIGTERM → «Graceful shutdown complete» y cierre del pool (exit 143 = SIGTERM de la JVM, normal).
+- Hallazgo previo (fuera de alcance): GlobalExceptionHandler convierte NoResourceFoundException/405 en 500 (p. ej. /v3/api-docs desactivado → 500). Por el gateway no se alcanza (rutas no registradas → 404 del gateway). Se comunica al usuario.
