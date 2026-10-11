@@ -123,3 +123,7 @@
 ## 2026-10-11 · 001-migracion-aws · T018 hecha
 - infra/routes: backend usuarios/routes.tfstate, SSM api-id/vpc-link-id/api-endpoint, 6 integraciones HTTP_PROXY por VPC Link (Host y TLS = endpoint, payload 1.0, overwrite:path a /api/v1/users...) y 6 rutas (GET NONE; POST/PUT/PATCH role/DELETE AWS_IAM); salidas gateway_url y route_keys. Lock con 3 plataformas.
 - Verificado: `terraform test` 7 passed; validate OK; fmt -check sin cambios.
+
+## 2026-10-11 · 001-migracion-aws · T019 hecha
+- scripts/: check-platform.sh, buscar-listener-express.sh (versión corregida con búsqueda por regla host-header), run-schema-task.sh (comentarios: tarea de migración Flyway), diagnose-service.sh y pruebas test-check-platform/test-buscar-listener, copiados de Geoespacial.
+- Verificado: 6 casos de las pruebas de scripts en verde; shellcheck v0.10.0 sin avisos.

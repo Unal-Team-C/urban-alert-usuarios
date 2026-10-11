@@ -7,12 +7,12 @@
 
 feature_activa: 001-migracion-aws
 fase: implement
-tarea_actual: T019
+tarea_actual: T020
 estado_tarea: hecha
 
 ## Siguiente paso
 
-T019: copiar scripts de Geoespacial (check-platform, buscar-listener-express, run-schema-task, diagnose-service) y sus pruebas.
+T020: scripts/smoke-gateway-usuarios.sh + scripts/tests/test-smoke.sh con curl simulado.
 
 ## Contexto de trabajo
 
