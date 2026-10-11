@@ -7,12 +7,12 @@
 
 feature_activa: 001-migracion-aws
 fase: implement
-tarea_actual: T010
+tarea_actual: T011
 estado_tarea: hecha
 
 ## Siguiente paso
 
-T010: crear src/main/resources/db/cloud/afterMigrate.sql; verificar CloudMigrationIT y la suite completa (socket de Podman).
+T011: Dockerfile con usuario no root y MaxRAMPercentage; verificar build, id y docker compose (health UP + 8 usuarios).
 
 ## Contexto de trabajo
 

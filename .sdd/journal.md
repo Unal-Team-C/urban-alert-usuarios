@@ -84,3 +84,7 @@
 - application-aws.yml (datasource/pool por entorno, Flyway off, validate, ECS JSON, graceful 20 s, springdoc off) y application-migrate.yml (web none, Flyway on con db/migration+db/cloud, placeholders desde DB_APP_USER/DB_APP_PASSWORD).
 - Desviación menor del plan §7: la tarea de migración no recibe DB_POOL_*; su pool queda fijo en 2 en el perfil (Flyway puede necesitar una conexión aparte). Plan actualizado.
 - Verificado: AwsProfileConfigTest 5/5; RequestLoggingFilterTest, UserTest, UserServiceTest en verde.
+
+## 2026-10-11 · 001-migracion-aws · T010 hecha
+- db/cloud/afterMigrate.sql: DO con format(%I/%L): crea users_app si falta, ALTER ROLE PASSWORD, CONNECT/USAGE, CRUD en todas las tablas + privilegios por defecto; revoca escritura sobre flyway_schema_history (añadido respecto a D-007: la app no toca el historial).
+- Verificado: suite completa en verde (70 pruebas: AwsProfileConfigTest 5, UserControllerIT 24, RequestLoggingFilterTest 2, UserTest 16, CloudMigrationIT 4, UserServiceTest 19). Un primer intento falló de nuevo al escribir informes tras borrar build/test-results (transitorio de la carpeta compartida).
