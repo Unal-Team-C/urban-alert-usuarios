@@ -44,3 +44,10 @@
 
 ## 2026-10-11 · 001-migracion-aws · tasks.md generado
 - 28 tareas: preparación 4, pruebas 3, núcleo 11, integración 5, pulido 5. Todo RF/RNF cubierto (RNF-004/005 se miden en verify).
+
+## 2026-10-11 · 001-migracion-aws · T001 hecha
+- build.gradle.kts: Spring Boot 3.3.4→3.5.16, dependency-management 1.1.7, springdoc 2.8.17.
+- Verificado: UserTest 16, UserServiceTest 19, UserControllerIT 24 en verde con Boot 3.5.16 (Testcontainers por el socket de Podman). Un primer intento falló al escribir el XML del informe en la carpeta compartida (transitorio); la repetición pasó.
+
+## 2026-10-11 · 001-migracion-aws · tasks.md aprobado
+- El usuario aprobó las tareas («begin implementing the tasks»).

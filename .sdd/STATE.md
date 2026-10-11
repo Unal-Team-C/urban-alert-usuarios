@@ -6,13 +6,13 @@
      estado_tarea: - | en_progreso | hecha | bloqueada -->
 
 feature_activa: 001-migracion-aws
-fase: tasks
-tarea_actual: T001
-estado_tarea: -
+fase: implement
+tarea_actual: T002
+estado_tarea: hecha
 
 ## Siguiente paso
 
-tasks.md generado (28 tareas): el usuario debe aprobarlo → /sdd-implement empezando por T001 (subir Spring Boot a 3.5.16).
+T002: .dockerignore (infra/, .github/, .sdd/, .claude/, specs/, scripts/, build/, .gradle/); verificar con podman build.
 
 ## Contexto de trabajo
 
@@ -20,11 +20,11 @@ tasks.md generado (28 tareas): el usuario debe aprobarlo → /sdd-implement empe
 - Los hooks del arnés usan `powershell`, que no está instalado en este Mac: no se ejecutan; el protocolo se sigue a mano.
 - Geoespacial gestiona en su estado los roles compartidos `urban-alert-ecs-execution-role` / `-infrastructure-role`: Usuarios NO debe reutilizarlos ni gestionarlos (P2); crea los suyos.
 - Rama `aws-provisioning` (PR a main al terminar). Semilla V2 anonimizada (8 usuarios, incl. test-user) en la nube; lecturas públicas y escrituras con AWS_IAM.
-- Sin JDK local: Gradle por Podman con `eclipse-temurin:21-jdk` y caché en `~/.cache/gradle-podman`.
+- Sin JDK local: Gradle por Podman con `eclipse-temurin:21-jdk` y caché en `~/.cache/gradle-podman`. Para las IT (Testcontainers): `podman run --rm --network host --security-opt label=disable -v /run/user/501/podman/podman.sock:/var/run/docker.sock -e TESTCONTAINERS_RYUK_DISABLED=true -e TESTCONTAINERS_HOST_OVERRIDE=localhost ...`; no borrar build/test-results durante la ejecución.
 
 - Versiones (Maven Central 2026-10-11): Spring Boot 3.5.16, springdoc 2.8.17, dependency-management 1.1.7.
 - Repo GitHub sin secretos/variables de Actions: falta AWS_ROLE_ARN y AWS_REGION (acción del usuario).
 
 ## Bloqueos / preguntas abiertas
 
-- Esperando aprobación de tasks.md.
+- ninguno
