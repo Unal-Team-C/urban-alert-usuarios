@@ -71,3 +71,7 @@
 ## 2026-10-11 · 001-migracion-aws · T006 hecha
 - AwsProfileConfigTest: perfil aws (datasource y pool desde el entorno, Flyway off, validate, formato ecs, graceful 20 s, springdoc off), perfil migrate (web none, Flyway on con db/migration+db/cloud, placeholders) y application.yml sin db/cloud.
 - Verificado: 5 pruebas, 4 fallan porque faltan application-aws.yml/application-migrate.yml (rojo esperado); la de application.yml pasa.
+
+## 2026-10-11 · 001-migracion-aws · T007 hecha
+- CloudMigrationIT (postgres:17-alpine, API de Flyway, métodos ordenados): 1ª migración (2 versiones, 8 usuarios anonimizados, 1 ADMIN, sin gmail), 2ª sin cambios, users_app con CRUD y sin CREATE/DROP, nueva contraseña sincronizada.
+- Verificado (socket de Podman): 1 y 2 pasan; 3 y 4 fallan con `password authentication failed for user users_app` (rojo esperado: falta afterMigrate.sql).

@@ -7,12 +7,12 @@
 
 feature_activa: 001-migracion-aws
 fase: implement
-tarea_actual: T007
+tarea_actual: T008
 estado_tarea: hecha
 
 ## Siguiente paso
 
-T007: escribir CloudMigrationIT (Testcontainers postgres:17-alpine, API de Flyway).
+T008: implementar RequestLoggingFilter (OncePerRequestFilter, @Component, orden alto, pares clave-valor).
 
 ## Contexto de trabajo
 
