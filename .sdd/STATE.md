@@ -7,12 +7,12 @@
 
 feature_activa: 001-migracion-aws
 fase: implement
-tarea_actual: T003
+tarea_actual: T004
 estado_tarea: hecha
 
 ## Siguiente paso
 
-T003: infra/bootstrap/README.md (arranque reutilizado y AWS_ROLE_ARN/AWS_REGION de este repo).
+T004: infra/INVENTARIO.md (recursos por stack, arranque, ajenos).
 
 ## Contexto de trabajo
 

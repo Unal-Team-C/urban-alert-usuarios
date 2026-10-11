@@ -55,3 +55,7 @@
 ## 2026-10-11 · 001-migracion-aws · T002 hecha
 - .dockerignore: el contexto queda en build.gradle.kts, settings, gradle/, gradlew, deploy/ y src/.
 - Verificado: imagen de prueba con COPY . lista solo esos archivos; `podman build --platform linux/amd64 -f deploy/docker/Dockerfile` termina bien.
+
+## 2026-10-11 · 001-migracion-aws · T003 hecha
+- infra/bootstrap/README.md: arranque reutilizado (OIDC, rol, 3 políticas, bucket) con su repo dueño; AWS_ROLE_ARN/AWS_REGION con ejemplo y comandos gh; requisito: ECR urban-alert-usuarios no debe existir.
+- Verificado: revisión del contenido; sin valores secretos.
