@@ -151,3 +151,6 @@
 
 ## 2026-10-11 · 001-migracion-aws · T025 hecha
 - Verificado: Gradle 70 pruebas en verde (UserControllerIT 24, CloudMigrationIT 4, AwsProfileConfigTest 5, RequestLoggingFilterTest 2, UserTest 16, UserServiceTest 19; con `clean` falla de nuevo la escritura de informes en la carpeta compartida, sin `clean` + --rerun-tasks pasa); Terraform base 11, service 6, routes 7 con init -lockfile=readonly; fmt OK; pruebas de scripts OK; actionlint y shellcheck sin avisos; búsqueda de secretos: solo referencias, ningún valor (las credenciales de desarrollo del compose ya existían).
+
+## 2026-10-11 · 001-migracion-aws · T026 hecha
+- El usuario configuró AWS_ROLE_ARN y AWS_REGION (comprobado con gh api: secreto presente, AWS_REGION=us-east-2) y autorizó push + PR. La inexistencia del ECR urban-alert-usuarios no se comprobó (sin AWS CLI local); si existiera, el primer apply falla con RepositoryAlreadyExistsException.

@@ -7,12 +7,12 @@
 
 feature_activa: 001-migracion-aws
 fase: implement
-tarea_actual: T026
+tarea_actual: T027
 estado_tarea: hecha
 
 ## Siguiente paso
 
-T026: pedir al usuario AWS_ROLE_ARN/AWS_REGION en el repo y confirmar que no existe ECR urban-alert-usuarios; con su permiso, push de aws-provisioning y PR a main.
+T027: cuando el usuario mergee el PR de aws-provisioning, seguir el primer Provision en main, corregir fallos con commits pequeños y anotar la fecha en infra/INVENTARIO.md.
 
 ## Contexto de trabajo
 
@@ -31,4 +31,4 @@ T026: pedir al usuario AWS_ROLE_ARN/AWS_REGION en el repo y confirmar que no exi
 
 ## Bloqueos / preguntas abiertas
 
-- T026 espera al usuario: configurar AWS_ROLE_ARN/AWS_REGION, confirmar ECR inexistente y autorizar push + PR.
+- T027 espera al merge del PR (decisión del usuario).
