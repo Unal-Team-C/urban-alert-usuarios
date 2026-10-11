@@ -1,0 +1,37 @@
+# Cloud profile used by the ECS Express service (spec 001-migracion-aws, plan §4).
+# Credentials come from Secrets Manager through the task definition; the JDBC URL requires TLS (sslmode=require).
+# The schema is applied beforehand by the one-off migration task (profile "migrate"), so Flyway is off here and
+# the application role has no DDL rights.
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      # DB_POOL_MAX × max tasks must stay within the 50-connection budget (plan D-009).
+      maximum-pool-size: ${DB_POOL_MAX}
+      minimum-idle: ${DB_POOL_MIN}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: false
+  lifecycle:
+    # Below the 30 s ECS stop timeout: in-flight requests finish, then the pool closes.
+    timeout-per-shutdown-phase: 20s
+
+server:
+  shutdown: graceful
+
+logging:
+  structured:
+    format:
+      console: ecs
+
+# Not published through the gateway (spec §8); the internal load balancer is reachable from the VPC.
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false

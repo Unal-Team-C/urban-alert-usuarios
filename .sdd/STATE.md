@@ -7,12 +7,12 @@
 
 feature_activa: 001-migracion-aws
 fase: implement
-tarea_actual: T009
+tarea_actual: T010
 estado_tarea: hecha
 
 ## Siguiente paso
 
-T009: crear application-aws.yml y application-migrate.yml; verificar AwsProfileConfigTest.
+T010: crear src/main/resources/db/cloud/afterMigrate.sql; verificar CloudMigrationIT y la suite completa (socket de Podman).
 
 ## Contexto de trabajo
 

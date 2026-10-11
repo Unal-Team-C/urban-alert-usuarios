@@ -1,0 +1,16 @@
+# One-off migration task: SPRING_PROFILES_ACTIVE=aws,migrate, connected as the RDS master user (plan D-002).
+# Starts without a web server, applies db/migration and the db/cloud callback (application role, plan D-003),
+# lets Hibernate validate the result and exits: 0 on success, non-zero on any error.
+spring:
+  main:
+    web-application-type: none
+  datasource:
+    hikari:
+      maximum-pool-size: 2
+      minimum-idle: 1
+  flyway:
+    enabled: true
+    locations: classpath:db/migration,classpath:db/cloud
+    placeholders:
+      app_user: ${DB_APP_USER}
+      app_password: ${DB_APP_PASSWORD}

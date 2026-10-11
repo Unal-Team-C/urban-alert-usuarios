@@ -145,7 +145,7 @@ Cada integración como en Geoespacial: `HTTP_PROXY`, `VPC_LINK`, listener 443, p
 | `DB_URL` | secreto `urban-alert-usuarios-db:jdbc_url::` | igual |
 | `DB_USERNAME` / `DB_PASSWORD` | secreto app `username` / `password` | secreto `rds!…` `username` / `password` |
 | `DB_APP_USER` / `DB_APP_PASSWORD` | — | `users_app` / secreto app `password` (placeholders de Flyway) |
-| `DB_POOL_MIN` / `DB_POOL_MAX` | `2` / `8` | `1` / `1` |
+| `DB_POOL_MIN` / `DB_POOL_MAX` | `2` / `8` | — (pool fijo de 2 en `application-migrate.yml`: Flyway puede usar una conexión aparte para el bloqueo; desviación anotada en T009) |
 
 **Logs**: una línea JSON ECS por evento en stdout (`@timestamp`, `log.level`, `log.logger`, `message`, `service.name`, más `method`, `path`, `status`, `duration_ms` en la línea por petición).
 

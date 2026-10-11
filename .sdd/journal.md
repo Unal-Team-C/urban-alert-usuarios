@@ -79,3 +79,8 @@
 ## 2026-10-11 · 001-migracion-aws · T008 hecha
 - RequestLoggingFilter (@Component, HIGHEST_PRECEDENCE): log.atInfo() con method/path/status/duration_ms; 500 si la cadena lanza; sin query string.
 - Verificado: RequestLoggingFilterTest 2/2, UserTest 16/16, UserServiceTest en verde.
+
+## 2026-10-11 · 001-migracion-aws · T009 hecha
+- application-aws.yml (datasource/pool por entorno, Flyway off, validate, ECS JSON, graceful 20 s, springdoc off) y application-migrate.yml (web none, Flyway on con db/migration+db/cloud, placeholders desde DB_APP_USER/DB_APP_PASSWORD).
+- Desviación menor del plan §7: la tarea de migración no recibe DB_POOL_*; su pool queda fijo en 2 en el perfil (Flyway puede necesitar una conexión aparte). Plan actualizado.
+- Verificado: AwsProfileConfigTest 5/5; RequestLoggingFilterTest, UserTest, UserServiceTest en verde.
