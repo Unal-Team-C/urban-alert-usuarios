@@ -113,7 +113,7 @@ Como revisor o nuevo integrante quiero encontrar en el repositorio cómo se desp
 - **RF-006**: La imagen DEBE escuchar en un puerto fijo documentado, exponer una comprobación de salud que refleje la disponibilidad de la base, ejecutarse sin privilegios de administrador y estar construida para la arquitectura de la plataforma.
 - **RF-007**: Cada imagen publicada DEBE etiquetarse con el identificador del commit, de forma inmutable.
 - **RF-008**: El esquema en la nube DEBE salir únicamente de las migraciones versionadas del repositorio, aplicarse una sola vez por versión antes de que la nueva versión reciba tráfico, y ser idempotente al repetir el despliegue.
-- **RF-009**: La base de la nube DEBE empezar con los mismos datos iniciales que en local: los 7 usuarios de la migración de semilla versionada (administrador por defecto incluido, US-007), insertados una sola vez y sin duplicarse en despliegues posteriores.
+- **RF-009**: La base de la nube DEBE empezar con los mismos datos iniciales que en local: los 8 usuarios **anonimizados** de la migración de semilla versionada (administrador por defecto, US-007; seis usuarios sintéticos; y `test-user` con correo `urbanalerttest@proton.me`), insertados una sola vez y sin duplicarse en despliegues posteriores. Ningún dato personal real.
 - **RF-010**: El servicio DEBE conectarse con un usuario propio con permisos de lectura y escritura de datos sobre sus tablas y sin permisos de DDL, distinto del usuario administrador; las migraciones las aplica una identidad con permisos de esquema.
 - **RF-011**: Toda la infraestructura del servicio DEBE estar definida como código en este repositorio: instancia PostgreSQL propia, reglas de red de acceso a ella, secretos, registro de imágenes, roles propios de ejecución e infraestructura, servicio Express con escalado, comprobación de salud, logs y rutas en el gateway.
 - **RF-012**: El servicio NO DEBE gestionar ni reutilizar recursos de otros microservicios (roles, clúster, base, grupos de seguridad, registro de imágenes), ni recursos de la plataforma o de arranque; solo los lee cuando los necesita.
@@ -184,7 +184,7 @@ Sin entidades nuevas: el modelo `User` (id, nombre, correo único, rol `USER`/`A
 ## 11. Clarificaciones
 
 ### Sesión 2026-10-11
-- P: ¿Qué datos iniciales lleva la base de la nube? → R: **Los 7 usuarios de la semilla**, igual que en local (RF-009). El usuario aceptó que nombres y correos reales queden en la base de la nube.
+- P: ¿Qué datos iniciales lleva la base de la nube? → R: **Los 7 usuarios de la semilla**, igual que en local (RF-009). Revisión posterior del usuario: **anonimizar** la semilla (nombres y correos sintéticos) y añadir `test-user` / `urbanalerttest@proton.me` (8 usuarios). Ya aplicado en `V2__seed_users.sql` y `DataInitializer`.
 - P: ¿Cómo se autorizan las rutas? → R: **Lecturas públicas, escrituras con firma IAM** (RF-019, HU-5 1–1c). Consecuencia aceptada: sin un consumidor firmante, las escrituras solo se pueden hacer con credenciales de AWS.
 - P: ¿Dónde se trabaja? → R: Rama `aws-provisioning` y PR a `main`, como Geoespacial (nada se despliega hasta el merge).
 

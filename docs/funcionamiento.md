@@ -18,7 +18,7 @@ Reglas de negocio implementadas (`UserService` + `User`, ver `specs/functional-s
 | `local` | H2 en memoria | `./gradlew bootRun` para desarrollo sin Docker. `DataInitializer` siembra usuarios de ejemplo al arrancar (solo con este perfil). |
 | `docker` | PostgreSQL (`DB_URL`/`DB_USERNAME`/`DB_PASSWORD` por variable de entorno) | Usado por `deploy/docker/docker-compose.yml`. |
 
-`V2__seed_users.sql` (Flyway) inserta el mismo conjunto de usuarios de ejemplo que `DataInitializer`, pero esa migración corre en **cualquier** perfil con Flyway habilitado (default y `docker`), no solo en `local`. Son nombres y emails reales de personas, no datos sintéticos — vale la pena tenerlo presente antes de desplegar este esquema fuera de un entorno de desarrollo cerrado.
+`V2__seed_users.sql` (Flyway) inserta el mismo conjunto de usuarios de ejemplo que `DataInitializer`, pero esa migración corre en **cualquier** perfil con Flyway habilitado (default y `docker`), no solo en `local`. Son datos sintéticos: el administrador por defecto, seis usuarios anónimos (`usuarioNN@example.com`) y `test-user` (`urbanalerttest@proton.me`) para pruebas. Una base local creada con la versión anterior de `V2` (con datos reales) falla la validación de Flyway por cambio de checksum: recrearla con `docker compose -f deploy/docker/docker-compose.yml down -v`.
 
 ## UUID v7
 
