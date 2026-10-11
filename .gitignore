@@ -69,3 +69,6 @@ bin/
 # Variables de entorno locales (credenciales de docker compose, etc.)
 *.env
 !.env.example
+
+# Arnés SDD
+.sdd/activity.log
