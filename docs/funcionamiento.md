@@ -17,6 +17,8 @@ Reglas de negocio implementadas (`UserService` + `User`, ver `specs/functional-s
 | (ninguno / default) | — | Config común: puerto, Flyway, Actuator, SpringDoc. No es ejecutable solo. |
 | `local` | H2 en memoria | `./gradlew bootRun` para desarrollo sin Docker. `DataInitializer` siembra usuarios de ejemplo al arrancar (solo con este perfil). |
 | `docker` | PostgreSQL (`DB_URL`/`DB_USERNAME`/`DB_PASSWORD` por variable de entorno) | Usado por `deploy/docker/docker-compose.yml`. |
+| `aws` | RDS PostgreSQL (credenciales de Secrets Manager, `sslmode=require`) | Servicio en ECS Express. Flyway desactivado, logs JSON (ECS), apagado ordenado, Swagger desactivado. Ver README «Despliegue en AWS». |
+| `aws,migrate` | RDS como usuario maestro | Tarea puntual antes de cada despliegue: Flyway (`db/migration` + callback `db/cloud/afterMigrate.sql`, que gestiona el rol `users_app`) y sale. |
 
 `V2__seed_users.sql` (Flyway) inserta el mismo conjunto de usuarios de ejemplo que `DataInitializer`, pero esa migración corre en **cualquier** perfil con Flyway habilitado (default y `docker`), no solo en `local`. Son datos sintéticos: el administrador por defecto, seis usuarios anónimos (`usuarioNN@example.com`) y `test-user` (`urbanalerttest@proton.me`) para pruebas. Una base local creada con la versión anterior de `V2` (con datos reales) falla la validación de Flyway por cambio de checksum: recrearla con `docker compose -f deploy/docker/docker-compose.yml down -v`.
 
@@ -25,6 +27,8 @@ Reglas de negocio implementadas (`UserService` + `User`, ver `specs/functional-s
 Los IDs se generan con `com.fasterxml.uuid.Generators.timeBasedEpochGenerator()` (ADR-US-05), para quedar ordenados cronológicamente igual que `Guid.CreateVersion7()` en los servicios .NET (Reportes, Auditoría). Esto mejora la localidad del índice B-tree de `id` frente a UUID v4 aleatorio.
 
 ## Brechas conocidas / fuera de alcance
+
+- `GlobalExceptionHandler` captura `Exception` y devuelve `500` también para rutas inexistentes (`NoResourceFoundException`) y métodos no permitidos (`405`). Por el gateway no se nota (las rutas no registradas responden 404 allí), pero llamando al servicio directamente sí.
 
 - No emite eventos de dominio al bus de mensajería (MassTransit/RabbitMQ) — si en el futuro algo necesita reaccionar a cambios de rol, habría que agregar un evento `UserRoleChanged` siguiendo el mismo patrón que usa Reportes.
 - No valida que el `role` enviado en `CreateUserRequest`/`UpdateUserRequest` sea estrictamente `USER`/`ADMIN` más allá de lo que ya hace la deserialización del enum (un valor no reconocido cae en `HttpMessageNotReadableException`, mapeado a `400`).

@@ -7,12 +7,12 @@
 
 feature_activa: 001-migracion-aws
 fase: implement
-tarea_actual: T024
+tarea_actual: T025
 estado_tarea: hecha
 
 ## Siguiente paso
 
-T024: README (despliegue, rutas, firma, workflows, variables, costes), docs/funcionamiento.md (perfiles aws/migrate) y CLAUDE.md.
+T025: comprobación completa (Gradle con Testcontainers, Terraform x3, scripts, actionlint, shellcheck, búsqueda de secretos).
 
 ## Contexto de trabajo
 

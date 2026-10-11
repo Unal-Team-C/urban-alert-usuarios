@@ -144,3 +144,7 @@
 ## 2026-10-11 · 001-migracion-aws · T023 hecha
 - deprovision.yml (adaptado del de Geoespacial): workflow_dispatch con confirmación urban-alert-usuarios y solo main; misma concurrency; routes destroy (valores de relleno) → service destroy → base apply allow_destroy + sufijo run_id → base destroy; cada paso tolera estado vacío; resumen con la copia final.
 - Verificado: actionlint sin errores.
+
+## 2026-10-11 · 001-migracion-aws · T024 hecha
+- README: resumen de AWS al inicio, estructura (infra/, scripts/, workflows), sección «Despliegue en AWS» (arquitectura, perfiles aws/migrate, tabla de 6 rutas, escrituras firmadas con signed-request.sh y qué necesita un consumidor, arranque AWS_ROLE_ARN/AWS_REGION, workflows, costes ~33 USD/mes sin la plataforma ni el ALB compartido, validación local), «Desarrollo con SDD». docs/funcionamiento.md: perfiles aws y aws,migrate; bug previo del 500 para rutas inexistentes. CLAUDE.md: stacks, perfiles, workflows, validación local y gotchas.
+- Verificado: tabla de 6 rutas, variables con ejemplo y costes presentes; sin valores secretos.
