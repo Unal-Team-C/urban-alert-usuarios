@@ -94,3 +94,7 @@
 - Verificado: build linux/amd64 OK; `id` = uid=100(app); docker compose (perfil docker): health UP, 8 usuarios, línea de petición en texto.
 - Simulación local de la nube (postgres:17 + imagen): la tarea `aws,migrate` FALLÓ con pool 2 (Hikari agotado: Flyway usa 3 conexiones con callbacks) → pool del perfil migrate subido a 4 (application-migrate.yml); después exit 0, repetida exit 0, sin la contraseña en logs. Servicio `aws` como users_app: health UP, 8 usuarios, logs JSON ECS con method/path/status/duration_ms; SIGTERM → «Graceful shutdown complete» y cierre del pool (exit 143 = SIGTERM de la JVM, normal).
 - Hallazgo previo (fuera de alcance): GlobalExceptionHandler convierte NoResourceFoundException/405 en 500 (p. ej. /v3/api-docs desactivado → 500). Por el gateway no se alcanza (rutas no registradas → 404 del gateway). Se comunica al usuario.
+
+## 2026-10-11 · 001-migracion-aws · T012 hecha
+- infra/base: versions, backend (usuarios/base.tfstate), providers (Service=usuarios), variables (name con prefijo urban-alert-usuarios, backups ≥ 7, container_port 8080), tfvars, network.tf (SSM vpc-id/vpc-cidr/subredes-privadas, SG tareas con entrada 8080 desde el CIDR, SG RDS solo desde tareas). .gitignore: .terraform/.
+- Verificado: init -backend=false + validate «Success»; fmt -check sin cambios.

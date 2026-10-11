@@ -7,12 +7,12 @@
 
 feature_activa: 001-migracion-aws
 fase: implement
-tarea_actual: T012
+tarea_actual: T013
 estado_tarea: hecha
 
 ## Siguiente paso
 
-T012: stack base parte 1 (versions, backend usuarios/base.tfstate, providers, variables, tfvars, network.tf con SSM y SGs); validar con terraform por Podman.
+T013: infra/base/ecr.tf e iam.tf (roles propios urban-alert-usuarios-ecs-*).
 
 ## Contexto de trabajo
 
@@ -26,6 +26,8 @@ T012: stack base parte 1 (versions, backend usuarios/base.tfstate, providers, va
 - Repo GitHub sin secretos/variables de Actions: falta AWS_ROLE_ARN y AWS_REGION (acción del usuario).
 
 - Pendiente de comunicar: GlobalExceptionHandler devuelve 500 para rutas inexistentes/405 (bug previo, fuera de alcance).
+
+- Terraform local: wrapper `<scratchpad>/tf` (Podman, hashicorp/terraform:1.16.5, caché de plugins en ~/.cache/tf-plugins).
 
 ## Bloqueos / preguntas abiertas
 
