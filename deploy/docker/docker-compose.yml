@@ -1,0 +1,32 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: urbanalert-users-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: urbanalert_users
+      POSTGRES_USER: urbanalert
+      POSTGRES_PASSWORD: urbanalert
+    ports:
+      - "5433:5432"
+    volumes:
+      - urbanalert-users-postgres-data:/var/lib/postgresql/data
+
+  users-service:
+    build:
+      context: ../..
+      dockerfile: deploy/docker/Dockerfile
+    container_name: urbanalert-users
+    restart: unless-stopped
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      DB_URL: jdbc:postgresql://postgres:5432/urbanalert_users
+      DB_USERNAME: urbanalert
+      DB_PASSWORD: urbanalert
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres
+
+volumes:
+  urbanalert-users-postgres-data:

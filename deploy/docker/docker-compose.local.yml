@@ -1,0 +1,12 @@
+services:
+  postgres:
+    network_mode: host
+    ports: !reset []
+
+  users-service:
+    build:
+      network: host
+    network_mode: host
+    ports: !reset []
+    environment:
+      DB_URL: jdbc:postgresql://localhost:5432/urbanalert_users
