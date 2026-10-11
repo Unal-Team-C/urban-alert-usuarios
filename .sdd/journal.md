@@ -135,3 +135,8 @@
 ## 2026-10-11 · 001-migracion-aws · T021 hecha
 - signed-request.sh: curl --aws-sigv4 aws:amz:<región>:execute-api; credenciales del entorno pasadas a curl por --config en stdin (no en la línea de comandos); token de sesión como cabecera; cuerpo JSON opcional.
 - Verificado: sin argumentos o sin credenciales → mensaje de uso y exit 2; shellcheck sin avisos; con credenciales falsas contra un eco HTTP público (httpbin.org) curl envía Authorization AWS4-HMAC-SHA256 con x-amz-security-token firmado.
+
+## 2026-10-11 · 001-migracion-aws · T022 hecha
+- provision.yml: push a main, concurrency urban-alert-usuarios-aws sin cancelación. Job test: setup-java 21 + setup-gradle, ./gradlew test (Testcontainers con el Docker del runner), pruebas de scripts, Terraform fmt/validate/test de los 3 stacks con -lockfile=readonly, actionlint, shellcheck v0.10.0. Job provision: OIDC → check-platform → base → ECR (omite si el tag existe; build -f deploy/docker/Dockerfile) → run-schema-task (migración) → service → diagnose si falla → listener → routes → humo → resumen.
+- test-smoke.sh marcado ejecutable.
+- Verificado: actionlint sin errores.

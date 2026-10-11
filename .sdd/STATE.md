@@ -7,12 +7,12 @@
 
 feature_activa: 001-migracion-aws
 fase: implement
-tarea_actual: T022
+tarea_actual: T023
 estado_tarea: hecha
 
 ## Siguiente paso
 
-T022: .github/workflows/provision.yml (job test: Gradle, scripts, Terraform x3, actionlint, shellcheck; job provision en el orden de §7 del plan).
+T023: .github/workflows/deprovision.yml (manual, confirmación urban-alert-usuarios, routes → service → base).
 
 ## Contexto de trabajo
 
