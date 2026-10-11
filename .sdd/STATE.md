@@ -7,12 +7,12 @@
 
 feature_activa: 001-migracion-aws
 fase: implement
-tarea_actual: T020
+tarea_actual: T021
 estado_tarea: hecha
 
 ## Siguiente paso
 
-T020: scripts/smoke-gateway-usuarios.sh + scripts/tests/test-smoke.sh con curl simulado.
+T021: scripts/signed-request.sh (curl --aws-sigv4).
 
 ## Contexto de trabajo
 

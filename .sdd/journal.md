@@ -127,3 +127,7 @@
 ## 2026-10-11 · 001-migracion-aws · T019 hecha
 - scripts/: check-platform.sh, buscar-listener-express.sh (versión corregida con búsqueda por regla host-header), run-schema-task.sh (comentarios: tarea de migración Flyway), diagnose-service.sh y pruebas test-check-platform/test-buscar-listener, copiados de Geoespacial.
 - Verificado: 6 casos de las pruebas de scripts en verde; shellcheck v0.10.0 sin avisos.
+
+## 2026-10-11 · 001-migracion-aws · T020 hecha
+- smoke-gateway-usuarios.sh (solo lectura): GET lista 200 con admin (reintentos), GET admin 200, GET id desconocido 404 del servicio, POST y DELETE sin firma 403, /actuator/health, GET …/{id}/role y /api/v1/users → 404. test-smoke.sh con curl simulado (gateway correcto, POST abierto, servicio caído, argumento inválido).
+- Verificado: 4/4 casos de test-smoke; shellcheck sin avisos.
