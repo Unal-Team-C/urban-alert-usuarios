@@ -140,3 +140,7 @@
 - provision.yml: push a main, concurrency urban-alert-usuarios-aws sin cancelación. Job test: setup-java 21 + setup-gradle, ./gradlew test (Testcontainers con el Docker del runner), pruebas de scripts, Terraform fmt/validate/test de los 3 stacks con -lockfile=readonly, actionlint, shellcheck v0.10.0. Job provision: OIDC → check-platform → base → ECR (omite si el tag existe; build -f deploy/docker/Dockerfile) → run-schema-task (migración) → service → diagnose si falla → listener → routes → humo → resumen.
 - test-smoke.sh marcado ejecutable.
 - Verificado: actionlint sin errores.
+
+## 2026-10-11 · 001-migracion-aws · T023 hecha
+- deprovision.yml (adaptado del de Geoespacial): workflow_dispatch con confirmación urban-alert-usuarios y solo main; misma concurrency; routes destroy (valores de relleno) → service destroy → base apply allow_destroy + sufijo run_id → base destroy; cada paso tolera estado vacío; resumen con la copia final.
+- Verificado: actionlint sin errores.

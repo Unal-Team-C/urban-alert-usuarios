@@ -51,7 +51,7 @@ Dependencias explícitas: añadir `— depende: T00X`.
 - [x] T020 [P] Escribir la prueba de humo por el gateway (D-011) y su prueba con un `curl` simulado — archivos: scripts/smoke-gateway-usuarios.sh, scripts/tests/test-smoke.sh — cubre: RF-014, RF-019, HU-5 — verifica: `bash scripts/tests/test-smoke.sh` en verde (pasa con respuestas correctas y falla si un `POST` sin firma devuelve 201); shellcheck sin avisos
 - [x] T021 [P] Escribir `signed-request.sh` (curl `--aws-sigv4`, credenciales del entorno, token de sesión opcional) — archivos: scripts/signed-request.sh — cubre: RF-019, RF-021 — verifica: shellcheck sin avisos; sin credenciales termina con un mensaje de uso y código ≠ 0
 - [x] T022 Escribir `provision.yml` (push a `main`, `concurrency: urban-alert-usuarios-aws`; job `test`: Gradle, scripts, Terraform x3, actionlint, shellcheck; job `provision`: orden de §7 del plan) — archivos: .github/workflows/provision.yml — cubre: RF-007, RF-014, RF-016, RF-017, RNF-003, RNF-005 — verifica: actionlint sin errores — depende: T016, T017, T018, T019, T020
-- [ ] T023 Escribir `deprovision.yml` (manual, confirmación `urban-alert-usuarios`, solo `main`, misma `concurrency`; routes → service → base `allow_destroy` → destroy, cada paso tolera estado vacío) — archivos: .github/workflows/deprovision.yml — cubre: RF-015, RF-016, RF-017, HU-2 — verifica: actionlint sin errores — depende: T022
+- [x] T023 Escribir `deprovision.yml` (manual, confirmación `urban-alert-usuarios`, solo `main`, misma `concurrency`; routes → service → base `allow_destroy` → destroy, cada paso tolera estado vacío) — archivos: .github/workflows/deprovision.yml — cubre: RF-015, RF-016, RF-017, HU-2 — verifica: actionlint sin errores — depende: T022
 
 ## Fase 5: Pulido
 
