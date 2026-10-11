@@ -115,3 +115,7 @@
 ## 2026-10-11 · 001-migracion-aws · T016 hecha
 - infra/base/tests/base.tftest.hcl: 11 runs (protección y copia final, RDS propia/privada/cifrada/backups, SG RDS solo desde tareas, red de SSM, entrada 8080 solo desde la VPC, roles y secretos propios, jdbc_url con TLS y users_app, tarea de migración con imagen del commit/perfil aws,migrate/maestro, allow_destroy, validaciones de name y backups). Lock: aws 6.68.0, random 3.9.1 con hashes linux_amd64/linux_arm64/darwin_arm64.
 - Verificado: `terraform test` 11 passed; `init -backend=false -lockfile=readonly` OK.
+
+## 2026-10-11 · 001-migracion-aws · T017 hecha
+- infra/service: backend usuarios/service.tfstate, remote_state de base, Express (todas las subredes privadas, SG de tareas, roles propios, 8080, /actuator/health, SPRING_PROFILES_ACTIVE=aws, DB_URL/USERNAME/PASSWORD del secreto, pool 2/8, CPU 60 % 1–5 tareas, 512/1024), precondición pool×tareas ≤ 50, salida service_endpoint. Lock con 3 plataformas.
+- Verificado: init -lockfile=readonly OK, validate OK, `terraform test` 6 passed (incl. 11×5 rechazado), fmt sin cambios.

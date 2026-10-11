@@ -7,12 +7,12 @@
 
 feature_activa: 001-migracion-aws
 fase: implement
-tarea_actual: T017
+tarea_actual: T018
 estado_tarea: hecha
 
 ## Siguiente paso
 
-T017: stack infra/service (Express) con pruebas y lock.
+T018: stack infra/routes (6 rutas: 2 GET NONE, 4 escrituras AWS_IAM) con pruebas y lock.
 
 ## Contexto de trabajo
 
