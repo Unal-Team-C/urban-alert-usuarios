@@ -103,3 +103,7 @@
 - ecr.tf (inmutable, scan, ciclo de vida, force_delete = allow_destroy) e iam.tf (urban-alert-usuarios-ecs-execution con AmazonECSTaskExecutionRolePolicy + read-usuarios-secrets acotada a secret:urban-alert-usuarios-* y rds!* etiquetado con esta base; urban-alert-usuarios-ecs-infrastructure con la política de Express).
 - Observación: la política read-project-secrets del rol de Geoespacial cubre secret:urban-alert-*, que incluye el secreto de Usuarios (repo ajeno; se comunica al usuario).
 - Verificado: validate «Success», fmt sin cambios.
+
+## 2026-10-11 · 001-migracion-aws · T014 hecha
+- rds.tf (PG 17 propio, db.t4g.micro, gp3 20→50, Single-AZ, privada, cifrada, backups 7, maestro gestionado por RDS, protección según allow_destroy, copia final por sufijo) y secrets.tf (random_password alfanumérico, secreto urban-alert-usuarios-db con jdbc_url ?sslmode=require, recovery 0).
+- Verificado: validate «Success», fmt sin cambios.

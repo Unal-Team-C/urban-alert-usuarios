@@ -7,12 +7,12 @@
 
 feature_activa: 001-migracion-aws
 fase: implement
-tarea_actual: T014
+tarea_actual: T015
 estado_tarea: hecha
 
 ## Siguiente paso
 
-T014: infra/base/rds.tf y secrets.tf.
+T015: infra/base ecs.tf, logs.tf, migrate_task.tf, outputs.tf.
 
 ## Contexto de trabajo
 
