@@ -67,3 +67,7 @@
 ## 2026-10-11 · 001-migracion-aws · T005 hecha
 - RequestLoggingFilterTest: una entrada con method/path/status/duration_ms (pares clave-valor SLF4J), sin query string; status 500 si la cadena lanza.
 - Verificado: compileTestJava falla solo por `cannot find symbol RequestLoggingFilter` (rojo esperado; como en Geoespacial, el commit queda en rojo hasta T008).
+
+## 2026-10-11 · 001-migracion-aws · T006 hecha
+- AwsProfileConfigTest: perfil aws (datasource y pool desde el entorno, Flyway off, validate, formato ecs, graceful 20 s, springdoc off), perfil migrate (web none, Flyway on con db/migration+db/cloud, placeholders) y application.yml sin db/cloud.
+- Verificado: 5 pruebas, 4 fallan porque faltan application-aws.yml/application-migrate.yml (rojo esperado); la de application.yml pasa.

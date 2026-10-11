@@ -7,12 +7,12 @@
 
 feature_activa: 001-migracion-aws
 fase: implement
-tarea_actual: T006
+tarea_actual: T007
 estado_tarea: hecha
 
 ## Siguiente paso
 
-T006: escribir AwsProfileConfigTest (lee application-aws.yml / application-migrate.yml).
+T007: escribir CloudMigrationIT (Testcontainers postgres:17-alpine, API de Flyway).
 
 ## Contexto de trabajo
 
