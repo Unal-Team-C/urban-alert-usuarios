@@ -1,0 +1,15 @@
+# Only the Gradle wrapper, build scripts and src/ are needed to build the image (deploy/docker/Dockerfile).
+.git
+.github
+.claude
+.sdd
+infra
+scripts
+specs
+docs
+build
+.gradle
+.idea
+.vscode
+**/.DS_Store
+*.md

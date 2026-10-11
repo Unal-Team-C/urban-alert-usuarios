@@ -51,3 +51,7 @@
 
 ## 2026-10-11 · 001-migracion-aws · tasks.md aprobado
 - El usuario aprobó las tareas («begin implementing the tasks»).
+
+## 2026-10-11 · 001-migracion-aws · T002 hecha
+- .dockerignore: el contexto queda en build.gradle.kts, settings, gradle/, gradlew, deploy/ y src/.
+- Verificado: imagen de prueba con COPY . lista solo esos archivos; `podman build --platform linux/amd64 -f deploy/docker/Dockerfile` termina bien.

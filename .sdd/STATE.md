@@ -7,12 +7,12 @@
 
 feature_activa: 001-migracion-aws
 fase: implement
-tarea_actual: T002
+tarea_actual: T003
 estado_tarea: hecha
 
 ## Siguiente paso
 
-T002: .dockerignore (infra/, .github/, .sdd/, .claude/, specs/, scripts/, build/, .gradle/); verificar con podman build.
+T003: infra/bootstrap/README.md (arranque reutilizado y AWS_ROLE_ARN/AWS_REGION de este repo).
 
 ## Contexto de trabajo
 
