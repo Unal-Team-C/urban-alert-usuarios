@@ -6,13 +6,13 @@
      estado_tarea: - | en_progreso | hecha | bloqueada -->
 
 feature_activa: 001-migracion-aws
-fase: clarify
+fase: plan
 tarea_actual: -
 estado_tarea: -
 
 ## Siguiente paso
 
-Spec aclarada: el usuario debe revisarla y aprobarla (Estado: aprobada) antes de /sdd-plan.
+Plan redactado: el usuario debe revisarlo y aprobarlo (Estado: aprobado) → /sdd-tasks.
 
 ## Contexto de trabajo
 
@@ -22,6 +22,9 @@ Spec aclarada: el usuario debe revisarla y aprobarla (Estado: aprobada) antes de
 - Rama `aws-provisioning` (PR a main al terminar). Semilla V2 anonimizada (8 usuarios, incl. test-user) en la nube; lecturas públicas y escrituras con AWS_IAM.
 - Sin JDK local: Gradle por Podman con `eclipse-temurin:21-jdk` y caché en `~/.cache/gradle-podman`.
 
+- Versiones (Maven Central 2026-10-11): Spring Boot 3.5.16, springdoc 2.8.17, dependency-management 1.1.7.
+- Repo GitHub sin secretos/variables de Actions: falta AWS_ROLE_ARN y AWS_REGION (acción del usuario).
+
 ## Bloqueos / preguntas abiertas
 
-- Esperando aprobación de la spec por el usuario.
+- Esperando aprobación del plan.

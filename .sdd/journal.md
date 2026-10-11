@@ -26,3 +26,15 @@
 - Se editó V2 en sitio (no V3): la base de la nube será nueva; una base local antigua falla el checksum de Flyway → `docker compose ... down -v` (documentado en docs/funcionamiento.md).
 - Verificado: V1+V2+V2 en postgres:16 → 8 filas (idempotente); compileJava + UserTest (16) + UserServiceTest (19) en verde en temurin:21 por Podman. UserControllerIT (Testcontainers) no se ejecutó.
 - Los datos reales siguen en el historial de git (commits anteriores).
+
+## 2026-10-11 · general · Historial de git sin reescribir
+- El usuario decidió no reescribir el historial: los datos reales de la semilla anterior siguen en `603bb86` (origin/main) y en `f5c314f` (local). Solo se anonimizó el árbol actual (`ebd5bf2`).
+
+## 2026-10-11 · 001-migracion-aws · Spec aprobada
+- El usuario aprobó la spec («Go ahead»). Fase plan.
+
+## 2026-10-11 · 001-migracion-aws · Plan redactado
+- 3 stacks (base/service/routes) como Geoespacial; estado en `usuarios/`.
+- D-002/D-003: Flyway en tarea ECS puntual (perfil `aws,migrate`, usuario maestro) + callback `afterMigrate` que crea/sincroniza `users_app` (CRUD, sin DDL); servicio con Flyway desactivado.
+- D-004: roles propios `urban-alert-usuarios-ecs-*` (no los de Geoespacial). D-005: Spring Boot 3.3.4 → 3.5.16 para logs ECS nativos. D-009: pool 8 × 5 tareas = 40.
+- D-010: 6 rutas explícitas (2 GET NONE, 4 escrituras AWS_IAM). D-011: humo sin escrituras; `signed-request.sh` (curl --aws-sigv4) para firmadas.
