@@ -59,3 +59,7 @@
 ## 2026-10-11 · 001-migracion-aws · T003 hecha
 - infra/bootstrap/README.md: arranque reutilizado (OIDC, rol, 3 políticas, bucket) con su repo dueño; AWS_ROLE_ARN/AWS_REGION con ejemplo y comandos gh; requisito: ECR urban-alert-usuarios no debe existir.
 - Verificado: revisión del contenido; sin valores secretos.
+
+## 2026-10-11 · 001-migracion-aws · T004 hecha
+- infra/INVENTARIO.md: recursos por stack (nada importado), arranque externo y recursos de otros repos; roles urban-alert-ecs-* de Geoespacial marcados como no usados. Nombre de la política en línea fijado: `read-usuarios-secrets`.
+- Verificado: todos los recursos de §4 del plan aparecen.

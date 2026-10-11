@@ -23,7 +23,7 @@ Dependencias explícitas: añadir `— depende: T00X`.
 - [x] T001 Subir Spring Boot a 3.5.16, `io.spring.dependency-management` a 1.1.7 y springdoc a 2.8.17 sin otros cambios — archivos: build.gradle.kts — cubre: RF-004, RF-022 — verifica: `$GRADLE compileJava test --tests '*UserTest' --tests '*UserServiceTest'` en verde y `UserControllerIT` en verde (local con socket de Podman o en CI)
 - [x] T002 [P] Excluir del contexto de build `infra/`, `.github/`, `.sdd/`, `.claude/`, `specs/`, `scripts/`, `build/` y `.gradle/` — archivos: .dockerignore — cubre: RNF-001 — verifica: `podman build -f deploy/docker/Dockerfile -t usuarios:t002 .` termina bien y el contexto enviado no incluye esas carpetas
 - [x] T003 [P] Documentar el arranque que se reutiliza (OIDC, rol de GitHub y sus 3 políticas, bucket; dueños en geoespacial/plataforma) y lo que este repo necesita configurar (`AWS_ROLE_ARN`, `AWS_REGION`) — archivos: infra/bootstrap/README.md — cubre: RF-021 — verifica: el README lista cada recurso de arranque con su dueño y los 2 valores de GitHub con ejemplo, sin valores secretos
-- [ ] T004 [P] Crear el inventario: recursos que crea cada stack, recursos externos de arranque, recursos de la plataforma y de Geoespacial que NO se gestionan — archivos: infra/INVENTARIO.md — cubre: RF-012, RF-021 — verifica: cada recurso de §4 del plan aparece en su stack; los roles `urban-alert-ecs-*` figuran como ajenos
+- [x] T004 [P] Crear el inventario: recursos que crea cada stack, recursos externos de arranque, recursos de la plataforma y de Geoespacial que NO se gestionan — archivos: infra/INVENTARIO.md — cubre: RF-012, RF-021 — verifica: cada recurso de §4 del plan aparece en su stack; los roles `urban-alert-ecs-*` figuran como ajenos
 
 ## Fase 2: Pruebas
 
