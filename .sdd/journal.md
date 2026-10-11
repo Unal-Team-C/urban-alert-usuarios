@@ -111,3 +111,7 @@
 ## 2026-10-11 · 001-migracion-aws · T015 hecha
 - ecs.tf (clúster urban-alert-usuarios), logs.tf (/ecs/urban-alert-usuarios y -migrate, 30 días), migrate_task.tf (Fargate X86_64 512/1024, SPRING_PROFILES_ACTIVE=aws,migrate, DB_URL/DB_APP_PASSWORD del secreto de la app, DB_USERNAME/DB_PASSWORD del secreto maestro rds!), outputs.tf (salidas de §7 del plan).
 - Verificado: validate «Success», fmt sin cambios.
+
+## 2026-10-11 · 001-migracion-aws · T016 hecha
+- infra/base/tests/base.tftest.hcl: 11 runs (protección y copia final, RDS propia/privada/cifrada/backups, SG RDS solo desde tareas, red de SSM, entrada 8080 solo desde la VPC, roles y secretos propios, jdbc_url con TLS y users_app, tarea de migración con imagen del commit/perfil aws,migrate/maestro, allow_destroy, validaciones de name y backups). Lock: aws 6.68.0, random 3.9.1 con hashes linux_amd64/linux_arm64/darwin_arm64.
+- Verificado: `terraform test` 11 passed; `init -backend=false -lockfile=readonly` OK.
