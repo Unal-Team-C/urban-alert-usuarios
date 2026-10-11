@@ -119,3 +119,7 @@
 ## 2026-10-11 · 001-migracion-aws · T017 hecha
 - infra/service: backend usuarios/service.tfstate, remote_state de base, Express (todas las subredes privadas, SG de tareas, roles propios, 8080, /actuator/health, SPRING_PROFILES_ACTIVE=aws, DB_URL/USERNAME/PASSWORD del secreto, pool 2/8, CPU 60 % 1–5 tareas, 512/1024), precondición pool×tareas ≤ 50, salida service_endpoint. Lock con 3 plataformas.
 - Verificado: init -lockfile=readonly OK, validate OK, `terraform test` 6 passed (incl. 11×5 rechazado), fmt sin cambios.
+
+## 2026-10-11 · 001-migracion-aws · T018 hecha
+- infra/routes: backend usuarios/routes.tfstate, SSM api-id/vpc-link-id/api-endpoint, 6 integraciones HTTP_PROXY por VPC Link (Host y TLS = endpoint, payload 1.0, overwrite:path a /api/v1/users...) y 6 rutas (GET NONE; POST/PUT/PATCH role/DELETE AWS_IAM); salidas gateway_url y route_keys. Lock con 3 plataformas.
+- Verificado: `terraform test` 7 passed; validate OK; fmt -check sin cambios.

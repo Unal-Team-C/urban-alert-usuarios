@@ -7,12 +7,12 @@
 
 feature_activa: 001-migracion-aws
 fase: implement
-tarea_actual: T018
+tarea_actual: T019
 estado_tarea: hecha
 
 ## Siguiente paso
 
-T018: stack infra/routes (6 rutas: 2 GET NONE, 4 escrituras AWS_IAM) con pruebas y lock.
+T019: copiar scripts de Geoespacial (check-platform, buscar-listener-express, run-schema-task, diagnose-service) y sus pruebas.
 
 ## Contexto de trabajo
 
