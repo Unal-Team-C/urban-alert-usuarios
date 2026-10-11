@@ -75,3 +75,7 @@
 ## 2026-10-11 · 001-migracion-aws · T007 hecha
 - CloudMigrationIT (postgres:17-alpine, API de Flyway, métodos ordenados): 1ª migración (2 versiones, 8 usuarios anonimizados, 1 ADMIN, sin gmail), 2ª sin cambios, users_app con CRUD y sin CREATE/DROP, nueva contraseña sincronizada.
 - Verificado (socket de Podman): 1 y 2 pasan; 3 y 4 fallan con `password authentication failed for user users_app` (rojo esperado: falta afterMigrate.sql).
+
+## 2026-10-11 · 001-migracion-aws · T008 hecha
+- RequestLoggingFilter (@Component, HIGHEST_PRECEDENCE): log.atInfo() con method/path/status/duration_ms; 500 si la cadena lanza; sin query string.
+- Verificado: RequestLoggingFilterTest 2/2, UserTest 16/16, UserServiceTest en verde.

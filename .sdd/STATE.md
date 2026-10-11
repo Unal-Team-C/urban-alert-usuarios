@@ -7,12 +7,12 @@
 
 feature_activa: 001-migracion-aws
 fase: implement
-tarea_actual: T008
+tarea_actual: T009
 estado_tarea: hecha
 
 ## Siguiente paso
 
-T008: implementar RequestLoggingFilter (OncePerRequestFilter, @Component, orden alto, pares clave-valor).
+T009: crear application-aws.yml y application-migrate.yml; verificar AwsProfileConfigTest.
 
 ## Contexto de trabajo
 

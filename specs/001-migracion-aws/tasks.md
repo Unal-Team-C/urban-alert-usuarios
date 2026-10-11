@@ -33,7 +33,7 @@ Dependencias explícitas: añadir `— depende: T00X`.
 
 ## Fase 3: Núcleo
 
-- [ ] T008 Implementar `RequestLoggingFilter` (pares clave-valor SLF4J, orden alto) — archivos: src/main/java/com/urbanalert/users/api/logging/RequestLoggingFilter.java — cubre: RF-004 — verifica: `$GRADLE test --tests '*RequestLoggingFilterTest'` en verde — depende: T001, T005
+- [x] T008 Implementar `RequestLoggingFilter` (pares clave-valor SLF4J, orden alto) — archivos: src/main/java/com/urbanalert/users/api/logging/RequestLoggingFilter.java — cubre: RF-004 — verifica: `$GRADLE test --tests '*RequestLoggingFilterTest'` en verde — depende: T001, T005
 - [ ] T009 Crear los perfiles `aws` y `migrate` — archivos: src/main/resources/application-aws.yml, src/main/resources/application-migrate.yml — cubre: RF-001, RF-002, RF-003, RF-004, RF-005, RF-008, RF-022 — verifica: `$GRADLE test --tests '*AwsProfileConfigTest'` en verde y el resto de unitarias sigue en verde — depende: T001, T006
 - [ ] T010 Crear el callback `afterMigrate.sql` (rol `${app_user}` idempotente, contraseña, CONNECT/USAGE/CRUD, privilegios por defecto) — archivos: src/main/resources/db/cloud/afterMigrate.sql — cubre: RF-010 — verifica: `CloudMigrationIT` en verde (local con socket o en CI) — depende: T007, T009
 - [ ] T011 Ajustar la imagen: usuario sin privilegios, `JAVA_TOOL_OPTIONS=-XX:MaxRAMPercentage=75`, `ENTRYPOINT` exec — archivos: deploy/docker/Dockerfile — cubre: RF-005, RF-006 — verifica: `podman build --platform linux/amd64 -f deploy/docker/Dockerfile -t usuarios:t011 .` y `podman run --rm --entrypoint id usuarios:t011` no es `uid=0`; `docker compose -f deploy/docker/docker-compose.yml up -d --build` deja `GET :8081/actuator/health` en `UP` y lista los 8 usuarios — depende: T002, T008, T009
