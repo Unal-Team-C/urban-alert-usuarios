@@ -98,3 +98,8 @@
 ## 2026-10-11 · 001-migracion-aws · T012 hecha
 - infra/base: versions, backend (usuarios/base.tfstate), providers (Service=usuarios), variables (name con prefijo urban-alert-usuarios, backups ≥ 7, container_port 8080), tfvars, network.tf (SSM vpc-id/vpc-cidr/subredes-privadas, SG tareas con entrada 8080 desde el CIDR, SG RDS solo desde tareas). .gitignore: .terraform/.
 - Verificado: init -backend=false + validate «Success»; fmt -check sin cambios.
+
+## 2026-10-11 · 001-migracion-aws · T013 hecha
+- ecr.tf (inmutable, scan, ciclo de vida, force_delete = allow_destroy) e iam.tf (urban-alert-usuarios-ecs-execution con AmazonECSTaskExecutionRolePolicy + read-usuarios-secrets acotada a secret:urban-alert-usuarios-* y rds!* etiquetado con esta base; urban-alert-usuarios-ecs-infrastructure con la política de Express).
+- Observación: la política read-project-secrets del rol de Geoespacial cubre secret:urban-alert-*, que incluye el secreto de Usuarios (repo ajeno; se comunica al usuario).
+- Verificado: validate «Success», fmt sin cambios.

@@ -7,12 +7,12 @@
 
 feature_activa: 001-migracion-aws
 fase: implement
-tarea_actual: T013
+tarea_actual: T014
 estado_tarea: hecha
 
 ## Siguiente paso
 
-T013: infra/base/ecr.tf e iam.tf (roles propios urban-alert-usuarios-ecs-*).
+T014: infra/base/rds.tf y secrets.tf.
 
 ## Contexto de trabajo
 
@@ -25,7 +25,7 @@ T013: infra/base/ecr.tf e iam.tf (roles propios urban-alert-usuarios-ecs-*).
 - Versiones (Maven Central 2026-10-11): Spring Boot 3.5.16, springdoc 2.8.17, dependency-management 1.1.7.
 - Repo GitHub sin secretos/variables de Actions: falta AWS_ROLE_ARN y AWS_REGION (acción del usuario).
 
-- Pendiente de comunicar: GlobalExceptionHandler devuelve 500 para rutas inexistentes/405 (bug previo, fuera de alcance).
+- Pendiente de comunicar: GlobalExceptionHandler devuelve 500 para rutas inexistentes/405 (bug previo, fuera de alcance). Y: el rol de ejecución de Geoespacial lee secret:urban-alert-*, incluido el de Usuarios (acotarlo en su repo).
 
 - Terraform local: wrapper `<scratchpad>/tf` (Podman, hashicorp/terraform:1.16.5, caché de plugins en ~/.cache/tf-plugins).
 
