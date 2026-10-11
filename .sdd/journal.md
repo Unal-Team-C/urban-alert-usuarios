@@ -131,3 +131,7 @@
 ## 2026-10-11 · 001-migracion-aws · T020 hecha
 - smoke-gateway-usuarios.sh (solo lectura): GET lista 200 con admin (reintentos), GET admin 200, GET id desconocido 404 del servicio, POST y DELETE sin firma 403, /actuator/health, GET …/{id}/role y /api/v1/users → 404. test-smoke.sh con curl simulado (gateway correcto, POST abierto, servicio caído, argumento inválido).
 - Verificado: 4/4 casos de test-smoke; shellcheck sin avisos.
+
+## 2026-10-11 · 001-migracion-aws · T021 hecha
+- signed-request.sh: curl --aws-sigv4 aws:amz:<región>:execute-api; credenciales del entorno pasadas a curl por --config en stdin (no en la línea de comandos); token de sesión como cabecera; cuerpo JSON opcional.
+- Verificado: sin argumentos o sin credenciales → mensaje de uso y exit 2; shellcheck sin avisos; con credenciales falsas contra un eco HTTP público (httpbin.org) curl envía Authorization AWS4-HMAC-SHA256 con x-amz-security-token firmado.
