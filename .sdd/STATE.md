@@ -7,12 +7,12 @@
 
 feature_activa: 001-migracion-aws
 fase: implement
-tarea_actual: T025
+tarea_actual: T026
 estado_tarea: hecha
 
 ## Siguiente paso
 
-T025: comprobación completa (Gradle con Testcontainers, Terraform x3, scripts, actionlint, shellcheck, búsqueda de secretos).
+T026: pedir al usuario AWS_ROLE_ARN/AWS_REGION en el repo y confirmar que no existe ECR urban-alert-usuarios; con su permiso, push de aws-provisioning y PR a main.
 
 ## Contexto de trabajo
 
@@ -31,4 +31,4 @@ T025: comprobación completa (Gradle con Testcontainers, Terraform x3, scripts, 
 
 ## Bloqueos / preguntas abiertas
 
-- ninguno
+- T026 espera al usuario: configurar AWS_ROLE_ARN/AWS_REGION, confirmar ECR inexistente y autorizar push + PR.

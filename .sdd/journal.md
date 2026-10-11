@@ -148,3 +148,6 @@
 ## 2026-10-11 · 001-migracion-aws · T024 hecha
 - README: resumen de AWS al inicio, estructura (infra/, scripts/, workflows), sección «Despliegue en AWS» (arquitectura, perfiles aws/migrate, tabla de 6 rutas, escrituras firmadas con signed-request.sh y qué necesita un consumidor, arranque AWS_ROLE_ARN/AWS_REGION, workflows, costes ~33 USD/mes sin la plataforma ni el ALB compartido, validación local), «Desarrollo con SDD». docs/funcionamiento.md: perfiles aws y aws,migrate; bug previo del 500 para rutas inexistentes. CLAUDE.md: stacks, perfiles, workflows, validación local y gotchas.
 - Verificado: tabla de 6 rutas, variables con ejemplo y costes presentes; sin valores secretos.
+
+## 2026-10-11 · 001-migracion-aws · T025 hecha
+- Verificado: Gradle 70 pruebas en verde (UserControllerIT 24, CloudMigrationIT 4, AwsProfileConfigTest 5, RequestLoggingFilterTest 2, UserTest 16, UserServiceTest 19; con `clean` falla de nuevo la escritura de informes en la carpeta compartida, sin `clean` + --rerun-tasks pasa); Terraform base 11, service 6, routes 7 con init -lockfile=readonly; fmt OK; pruebas de scripts OK; actionlint y shellcheck sin avisos; búsqueda de secretos: solo referencias, ningún valor (las credenciales de desarrollo del compose ya existían).
