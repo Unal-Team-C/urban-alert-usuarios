@@ -7,12 +7,12 @@
 
 feature_activa: 001-migracion-aws
 fase: implement
-tarea_actual: T005
+tarea_actual: T006
 estado_tarea: hecha
 
 ## Siguiente paso
 
-T005: escribir RequestLoggingFilterTest (debe fallar solo por compilación).
+T006: escribir AwsProfileConfigTest (lee application-aws.yml / application-migrate.yml).
 
 ## Contexto de trabajo
 

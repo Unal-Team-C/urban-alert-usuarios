@@ -63,3 +63,7 @@
 ## 2026-10-11 · 001-migracion-aws · T004 hecha
 - infra/INVENTARIO.md: recursos por stack (nada importado), arranque externo y recursos de otros repos; roles urban-alert-ecs-* de Geoespacial marcados como no usados. Nombre de la política en línea fijado: `read-usuarios-secrets`.
 - Verificado: todos los recursos de §4 del plan aparecen.
+
+## 2026-10-11 · 001-migracion-aws · T005 hecha
+- RequestLoggingFilterTest: una entrada con method/path/status/duration_ms (pares clave-valor SLF4J), sin query string; status 500 si la cadena lanza.
+- Verificado: compileTestJava falla solo por `cannot find symbol RequestLoggingFilter` (rojo esperado; como en Geoespacial, el commit queda en rojo hasta T008).
