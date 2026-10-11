@@ -38,3 +38,9 @@
 - D-002/D-003: Flyway en tarea ECS puntual (perfil `aws,migrate`, usuario maestro) + callback `afterMigrate` que crea/sincroniza `users_app` (CRUD, sin DDL); servicio con Flyway desactivado.
 - D-004: roles propios `urban-alert-usuarios-ecs-*` (no los de Geoespacial). D-005: Spring Boot 3.3.4 → 3.5.16 para logs ECS nativos. D-009: pool 8 × 5 tareas = 40.
 - D-010: 6 rutas explícitas (2 GET NONE, 4 escrituras AWS_IAM). D-011: humo sin escrituras; `signed-request.sh` (curl --aws-sigv4) para firmadas.
+
+## 2026-10-11 · 001-migracion-aws · Plan aprobado
+- El usuario aprobó el plan («Go ahead»). Fase tasks.
+
+## 2026-10-11 · 001-migracion-aws · tasks.md generado
+- 28 tareas: preparación 4, pruebas 3, núcleo 11, integración 5, pulido 5. Todo RF/RNF cubierto (RNF-004/005 se miden en verify).

@@ -1,7 +1,7 @@
 # Plan técnico: Migración del Servicio de Usuarios a AWS
 
 - **Spec**: ./spec.md
-- **Estado**: borrador <!-- borrador | aprobado -->
+- **Estado**: aprobado <!-- borrador | aprobado -->
 - **Fecha**: 2026-10-11
 - **Referencia**: `Unal-Team-C/urban-alert-geoespacial`, spec y plan 002-migracion-aws (aplicado y verificado en la cuenta). Lo que aquí no se justifica de otra forma se copia de ese patrón.
 

@@ -6,13 +6,13 @@
      estado_tarea: - | en_progreso | hecha | bloqueada -->
 
 feature_activa: 001-migracion-aws
-fase: plan
-tarea_actual: -
+fase: tasks
+tarea_actual: T001
 estado_tarea: -
 
 ## Siguiente paso
 
-Plan redactado: el usuario debe revisarlo y aprobarlo (Estado: aprobado) → /sdd-tasks.
+tasks.md generado (28 tareas): el usuario debe aprobarlo → /sdd-implement empezando por T001 (subir Spring Boot a 3.5.16).
 
 ## Contexto de trabajo
 
@@ -27,4 +27,4 @@ Plan redactado: el usuario debe revisarlo y aprobarlo (Estado: aprobado) → /sd
 
 ## Bloqueos / preguntas abiertas
 
-- Esperando aprobación del plan.
+- Esperando aprobación de tasks.md.
